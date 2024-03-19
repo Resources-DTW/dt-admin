@@ -15,39 +15,15 @@ export default function Progress({ services }) {
     <div>
       <Card style={{ borderRadius: "16px" }}>
         <CardContent>
-          <Typography
-            style={{ fontSize: 18, fontWeight: 500, color: "#1B1B1B" }}
-          >
-            Popular Interested Services
-          </Typography>
+          <p className="Headline">Popular Interested Services</p>
 
           <Divider style={{ marginTop: 10 }} />
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                padding: 5,
-                width: "47%",
-              }}
-            >
+          <div className="Progress_Container">
+            <div className="first_progress">
               {firstSix.map((item, index) => (
                 <div key={index}>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
+                  <div className="Linear_progress">
                     <p>{item.name}</p>
                     <p>{item.value}%</p>
                   </div>
@@ -58,23 +34,10 @@ export default function Progress({ services }) {
               ))}
             </div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                padding: 5,
-                width: "47%",
-              }}
-            >
+            <div className="first_progress">
               {rest.map((item, index) => (
                 <div key={index}>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
+                  <div className="Linear_progress">
                     <p>{item.name}</p>
                     <p>{item.value}%</p>
                   </div>

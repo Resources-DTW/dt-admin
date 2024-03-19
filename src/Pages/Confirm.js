@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Maincontainer } from "../styles/Styles";
+import Box from "@mui/material/Box";
+import Logo from "../assests/Logo.png";
+
 import {
-  Box,
   Button,
-  CssBaseline,
   FormControl,
-  Grid,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
-  Typography,
 } from "@mui/material";
-import Formbanner from "../components/Formbanner";
-import Logo from "../assests/Logo.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Formbanner from "../components/Formbanner";
 
 const defaultTheme = createTheme();
 
-export default function Confirm() {
+export default function Blogs() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -38,195 +35,137 @@ export default function Confirm() {
   };
 
   return (
-    <div>
-      <Maincontainer>
-        <ThemeProvider theme={defaultTheme}>
-          <Grid container component="main">
-            <CssBaseline />
-            <Formbanner />
-            <Grid
-              item
-              xs={12}
-              sm={8}
-              md={5}
-              style={{
-                width: "100%",
-                height: "100%",
-                justifyContent: "center",
-                display: "flex",
-              }}
-            >
-              <Box
-                sx={{
-                  my: 8,
-                  mx: 4,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 4,
-                }}
-              >
-                <img
-                  src={Logo}
-                  style={{
-                    height: "12%",
-                    width: "40%",
-                  }}
-                />
+    <ThemeProvider theme={defaultTheme}>
+      <div className="Form_div">
+        <Formbanner />
 
-                <div>
-                  <Typography
-                    component="h1"
-                    style={{ fontSize: "56px", fontWeight: 700 }}
-                  >
-                    Welcome back!
-                  </Typography>
-                  <Typography
-                    component="h1"
-                    style={{
-                      fontSize: "15px",
-                      fontWeight: 400,
-                      textAlign: "center",
+        <div className="Grid">
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img src={Logo} alt="logo" className="Logo" />
+
+            <div>
+              <h1 className="Title">Welcome back!</h1>
+              <h2 className="Sub_Title">Please enter your details below</h2>
+            </div>
+
+            <div className="Box">
+              <Box component="form" noValidate onSubmit={handleSubmit} />
+              <form noValidate autoComplete="on">
+                <FormControl style={{ gap: 15 }} variant="outlined">
+                  <FormControl
+                    variant="outlined"
+                    sx={{
+                      "& input": {
+                        paddingRight: "70px",
+                      },
                     }}
                   >
-                    Please enter your details below
-                  </Typography>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Box component="form" noValidate onSubmit={handleSubmit} />
-                  <form noValidate autoComplete="on">
-                    <FormControl
+                    <InputLabel
+                      htmlFor="outlined-adornment-password"
                       style={{
-                        gap: 15,
+                        fontSize: "15px",
+                        marginTop: "-5px",
                       }}
-                      variant="outlined"
                     >
-                      <FormControl
-                        variant="outlined"
-                        sx={{
-                          "& input": {
-                            paddingRight: "70px",
-                          },
-                        }}
-                      >
-                        <InputLabel
-                          htmlFor="outlined-adornment-password"
-                          style={{
-                            fontSize: "15px",
-                            marginTop: "-5px",
-                          }}
-                        >
-                          Password
-                        </InputLabel>
-                        <OutlinedInput
-                          size="small"
-                          id="outlined-adornment-password"
-                          type={showPassword ? "text" : "password"}
-                          endAdornment={
-                            <InputAdornment position="end">
-                              <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                              >
-                                {showPassword ? (
-                                  <VisibilityOff />
-                                ) : (
-                                  <Visibility />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          }
-                          // startAdornment={
-                          //   <InputAdornment position="start">
-                          //     <FontAwesomeIcon
-                          //       icon={faLock}
-                          //       style={{ color: "#BBBBBB" }}
-                          //     />
-                          //   </InputAdornment>
-                          // }
+                      Password
+                    </InputLabel>
+                    <OutlinedInput
+                      size="small"
+                      id="outlined-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      // startAdornment={
+                      //   <InputAdornment position="start">
+                      //     <FontAwesomeIcon
+                      //       icon={faLock}
+                      //       style={{ color: "#BBBBBB" }}
+                      //     />
+                      //   </InputAdornment>
+                      // }
 
-                          style={{
-                            backgroundColor: "white",
-                          }}
-                          label="Password"
-                        />
-                      </FormControl>
+                      style={{
+                        backgroundColor: "white",
+                      }}
+                      label="Password"
+                    />
+                  </FormControl>
 
-                      <FormControl variant="outlined">
-                        <InputLabel
-                          htmlFor="outlined-adornment-password"
-                          style={{
-                            fontSize: "15px",
-                            marginTop: "-5px",
-                          }}
-                        >
-                          Confirm Password
-                        </InputLabel>
-                        <OutlinedInput
-                          size="small"
-                          id="outlined-adornment-password"
-                          type={showPassword ? "text" : "password"}
-                          endAdornment={
-                            <InputAdornment position="end">
-                              <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                              >
-                                {showPassword ? (
-                                  <VisibilityOff />
-                                ) : (
-                                  <Visibility />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          }
-                          // startAdornment={
-                          //   <InputAdornment position="start">
-                          //     <FontAwesomeIcon
-                          //       icon={faLock}
-                          //       style={{ color: "#BBBBBB" }}
-                          //     />
-                          //   </InputAdornment>
-                          // }
+                  <FormControl variant="outlined">
+                    <InputLabel
+                      htmlFor="outlined-adornment-password"
+                      style={{
+                        fontSize: "15px",
+                        marginTop: "-5px",
+                      }}
+                    >
+                      Confirm Password
+                    </InputLabel>
+                    <OutlinedInput
+                      size="small"
+                      id="outlined-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      // startAdornment={
+                      //   <InputAdornment position="start">
+                      //     <FontAwesomeIcon
+                      //       icon={faLock}
+                      //       style={{ color: "#BBBBBB" }}
+                      //     />
+                      //   </InputAdornment>
+                      // }
 
-                          style={{
-                            backgroundColor: "white",
-                          }}
-                          label="Confirm Password"
-                        />
-                      </FormControl>
+                      style={{
+                        backgroundColor: "white",
+                      }}
+                      label="Confirm Password"
+                    />
+                  </FormControl>
 
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        style={{
-                          borderRadius: "8px",
-                          backgroundColor: "#134EDF",
-                        }}
-                      >
-                        SEND
-                      </Button>
-                    </FormControl>
-                  </form>
-                </div>
-              </Box>
-            </Grid>
-          </Grid>
-        </ThemeProvider>
-      </Maincontainer>
-    </div>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    className="Login_button"
+                  >
+                    SAVE
+                  </Button>
+                </FormControl>
+              </form>
+            </div>
+          </Box>
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
